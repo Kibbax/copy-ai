@@ -7,6 +7,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors:{
+        'primary':'#240046',
+        'fontWhite':'#F0DCF0',
+        'fontPurple':'#E0AAFF',
+        'buttonBlack': '#19111E',
+        'inputColor':'#878383',
+        'activeLigthBlue':'#6FE9D3',
+        'inactiveLigthBlue':'#00CED1',
+        'linesColors':'#5A189A'
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
