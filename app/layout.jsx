@@ -1,5 +1,9 @@
+import Title from "@/components/Title"
 import Navbar from "../components/Navbar"
 import './globals.css'
+import Button from "@/components/Button"
+import Background from "@/components/Background"
+import { SquareComponent } from "@/components/SquareComponent"
  
 export const metadata = {
   title: 'Copy AI',
@@ -8,7 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
       <html lang="en">
-        <body className="bg-primary">
+        <body >
+          <Background/>
+          <SquareComponent/>
+          <Title text="FRUTILLA"/>
+          <Button text="Probando" />
           <Navbar />
 
           {children}
