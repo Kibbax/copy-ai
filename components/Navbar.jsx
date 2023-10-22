@@ -30,7 +30,7 @@ export default function Navbar (){
           </ul>
         </div>
 
-        <div className="flex items-center justify-between  bg-stone-900">
+        <div className="fixed z-20 w-screen flex items-center justify-between  bg-stone-900">
         <div >
             <Link href="/" className="m-4">COPY.AI</Link>
         </div>
@@ -45,7 +45,7 @@ export default function Navbar (){
             <Link href="/input" className="m-4">Sign Up</Link>
             </li>
 
-            
+        
           </ul>
         </div>
 

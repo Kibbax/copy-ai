@@ -12,9 +12,10 @@ export default function RootLayout({ children }) {
     return (
       <html lang="en">
         <body className="bg-primary" >
-          {/* <Background/> */}
           <Navbar />
-
+          <Background/>
+          {/* <Title text="FRUTILLA"/>
+          <Button text="Probando" /> */}
           {children}
         </body>
       </html>
