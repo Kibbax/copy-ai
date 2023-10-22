@@ -3,7 +3,6 @@ const Button = ({ text}) => {
     <button
     className="w-1/2 h-10 flex-shrink-0 rounded-md bg-opacity-33 bg-buttonBlack hover:bg-hoverColor text-fontWhite font-bold"
     >
-
       {text}
     </button>
   );

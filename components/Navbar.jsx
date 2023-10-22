@@ -5,7 +5,7 @@ export default function Navbar (){
     return (
         <nav className="">
           
-          <div className="fixed top-0 left-0 h-screen w-40 bg-stone-900 text-white hidden"> 
+          <div className="fixed top-0 left-0 h-screen w-40 bg-stone-900 text-white hidden">
           ✌️
           <ul className="">
             <li className="py-4 border-b border-white">
