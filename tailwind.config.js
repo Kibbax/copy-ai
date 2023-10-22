@@ -15,7 +15,8 @@ module.exports = {
         'inputColor':'#878383',
         'activeLigthBlue':'#6FE9D3',
         'inactiveLigthBlue':'#00CED1',
-        'linesColors':'#5A189A'
+        'linesColors':'#5A189A',
+        'hoverColor':'#19111E'
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',

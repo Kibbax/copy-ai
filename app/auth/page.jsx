@@ -1,7 +1,11 @@
+import Button from "@/components/Button"
+import Title from "@/components/Title"
+
+
 export default function AuthPage() {
   return <div className=" text-gray-200 pt-36">
     <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-10 pb-10">
-    <h1 className="text-3xl font-semibold pb-5">LOGIN</h1>
+      <Title text="LOGIN"/>
     <h2>Do you have an account in a COPY.AI?</h2>
     </div>
   <form className="w-3/4 md:w-1/2 lg:w-1/3 m-auto  ">
@@ -27,12 +31,9 @@ export default function AuthPage() {
       required
     />
   </div>
-  <button
-    type="submit"
-    className="block m-auto bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-full w-1/2 "
-  >
-    Login
-  </button>
+  <div className="m-auto text-center">
+  <Button text="Login"/>
+  </div>
 </form>
 </div>
 }
