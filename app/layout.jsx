@@ -14,8 +14,6 @@ export default function RootLayout({ children }) {
         <body className="bg-primary" >
           <Navbar />
           <Background/>
-          {/* <Title text="FRUTILLA"/>
-          <Button text="Probando" /> */}
           {children}
         </body>
       </html>
