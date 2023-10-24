@@ -3,7 +3,7 @@ import Title from "@/components/Title"
 
 
 export default function AuthPage() {
-  return <div className=" text-gray-200 pt-36">
+  return <div className="text-gray-200 pt-36">
     <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-10 pb-10">
       <Title text="LOGIN"/>
     <h2>Do you have an account in a COPY.AI?</h2>
