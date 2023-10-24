@@ -20,7 +20,8 @@ module.exports = {
         'activeLigthBlue':'#6FE9D3',
         'inactiveLigthBlue':'#00CED1',
         'linesColors':'#5A189A',
-        'hoverColor':'#19111E'
+        'hoverColor':'#00CED1',
+        'hoverTextColor':'#19111E',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
