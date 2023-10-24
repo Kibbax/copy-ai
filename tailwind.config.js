@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        'titleFont': ['Staatliches'],
+        'textFont': ['DM Sans'],
+      },
       colors:{
         'primary':'#240046',
         'fontWhite':'#F0DCF0',
