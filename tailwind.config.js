@@ -18,6 +18,10 @@ module.exports = {
         'linesColors':'#5A189A',
         'hoverColor':'#19111E'
       },
+      fontFamily: {
+        'staatliches': ['Staatliches', 'cursive'],
+        'dm-sans': ['DM Sans', 'sans'],
+      },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
