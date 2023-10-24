@@ -3,7 +3,7 @@ import Title from "@/components/Title";
 
 const Page = () => {
   return (
-    <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-20 pb-10 text-gray-200">
+    <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-20 pb-10 text-gray-200 relative">
       <Title text="awesome!!" />
       <h2 className="text-lg">
         Copy AI crafted these captivating copies just for you! 
