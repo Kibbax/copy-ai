@@ -9,16 +9,16 @@ const Button = ({ text }) => {
     borderRight: '1px solid #5A189A', // Borde derecho
   };
 
-  const textStyles = {
+  /* const textStyles = {
     WebkitTextStroke: '1px #5A189A', // Borde para el texto
-  };
+  }; */
 
   return (
     <button
       className="w-1/2 h-10 flex-shrink-0 rounded-md bg-opacity-33 bg-buttonBlack hover:bg-hoverColor hover:text-hoverTextColor text-fontWhite font-bold"
       style={buttonStyles}
     >
-      <span style={textStyles}>{text}</span>
+      <span /* style={textStyles} */>{text}</span>
     </button>
   );
 };
