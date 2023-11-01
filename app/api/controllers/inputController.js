@@ -6,9 +6,9 @@ export async function createInput(req, _res) {
   const newInput = await prisma.content_input.create({
     data: {
       userId:1,
-      content: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos minima in suscipit totam, mollitia blanditiis."/* req.body.prompt */,
-      networkType: "Instagram"/* req.body.value */,
-      targetAge: "15-25" /* req.body.targetAge */,
+      content: req.body.prompt /* "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos minima in suscipit totam, mollitia blanditiis." */,
+      networkType: req.body.value /* "Instagram" */,
+      targetAge:  req.body.targetAge /* "15-25" */,
     },
   });
  
