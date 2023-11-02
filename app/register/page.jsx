@@ -2,11 +2,12 @@
 import Button from "@/components/Button";
 import Title from "@/components/Title";
 import { useForm } from "react-hook-form";
+import {useRouter } from "next/navigation";
 
 export default function Register() {
 
   const { register, handleSubmit, formState: { errors } } = useForm()
-  
+  const router = useRouter();
   
 
   const onSubmit = handleSubmit(async data => {
@@ -26,7 +27,11 @@ export default function Register() {
         password: data.password
       })
     })
-  const resJSON = await res.json();
+  const resJSON = await res.json(); // quitar al tener la ruta de longing
+  //activar cuando se tenga la ruta loging
+  /* if(res.ok){
+    router.push('/auth/login')
+  } */
   console.log(resJSON);
   })
 
