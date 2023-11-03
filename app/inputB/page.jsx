@@ -26,12 +26,13 @@ export default function InputPage() {
 
           </select>
 
-          <select
+          <select value=""
             className="bg-fontWhite text-linesColors my-3 p-2 rounded-md font-bold"
             name="objectivePublic"
             id="objectivePublic"
           >
-            <option value="" disabled selected>Select Objective Public</option>
+            <option value="" disabled >Select Objective Public</option>
+            <option value="2" >cualquier texto</option>
           </select>
 
           <select

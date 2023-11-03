@@ -18,7 +18,7 @@ export default function Navbar (){
             </li>
 
             <li className="py-4 border-b border-white ">
-              <Link href="/auth" className="m-4">Login</Link>
+              <Link href="/auth/login" className="m-4">Login</Link>
             </li>
 
             <li className="py-4 border-b border-white">
