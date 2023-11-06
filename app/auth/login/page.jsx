@@ -1,7 +1,7 @@
 "use client"
 import Button from "@/components/Button"
 import Title from "@/components/Title"
-import { signIn } from "next-auth/react"
+//import { signIn } from "next-auth/react"
 
 
 export default function AuthPage() {
@@ -10,7 +10,7 @@ export default function AuthPage() {
       <Title text="LOGIN"/>
     <h2>Do you have an account in a COPY.AI?</h2>
     </div>
-  <form className="w-3/4 md:w-1/2 lg:w-1/3 m-auto  " onSubmit={e => signIn("credentials", { email: e.target.email.value, password: e.target.password.value })}>
+  <form className="w-3/4 md:w-1/2 lg:w-1/3 m-auto  " /* onSubmit={e => signIn("credentials", { email: e.target.email.value, password: e.target.password.value })} */>
   <div className="mb-4">
     <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2"></label>
     <input

@@ -27,13 +27,15 @@ export default function Register() {
         password: data.password
       })
     })
-  const resJSON = await res.json(); // quitar al tener la ruta de longing
+  /* const resJSON = await res.json(); */ // quitar al tener la ruta de longing
   //activar cuando se tenga la ruta loging
-  /* if(res.ok){
+  if(res.ok){
     router.push('/auth/login')
-  } */
-  console.log(resJSON);
+  }
+  
   })
+
+  console.log(errors);
 
   return (
     <div className="text-gray-200">
