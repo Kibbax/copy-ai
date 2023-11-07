@@ -19,18 +19,16 @@ export const authOptions = {
                 email: credentials.email
             }
         })
-
-        if (!userFound) throw new Error('No user found')
-
-        console.log(userFound)
+         //posible bug en res.ok
+        if (!userFound) throw new Error('Invalid email or password')
 
         const matchPassword = await bcrypt.compare(credentials.password, userFound.password)
 
-        if (!matchPassword) throw new Error('Wrong password')
+        if (!matchPassword) throw new Error('Invalid email or password')
 
         return {
             id: userFound.id,
-            name: userFound.username,
+            name: userFound.name,
             email: userFound.email,
         }
       },
