@@ -1,7 +1,7 @@
-"use client"
-
+'use client'
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import {signOut} from 'next-auth/react'
 
 
 export default function Navbar (){
@@ -11,7 +11,6 @@ export default function Navbar (){
         <nav className="bg-black bg-opacity-20">
           
           <div className="fixed top-0 left-0 h-screen w-40 bg-stone-900 text-white hidden">
-          ✌️
           <ul className="">
             <li className="py-4 border-b border-white">
             <Link href="/" className="m-4">Home</Link>
@@ -43,14 +42,23 @@ export default function Navbar (){
            
 
             <li className="">
-              <Link href="/auth" className={`link ${
-                pathname === "/auth" ? "bg-primary" : " "} hover:bg-primary font-bold py-2 px-4 rounded-tl-lg rounded-tr-lg inline-block mr-4`}>LOGIN</Link>
+              <Link href="/auth/login" className={`link ${
+                pathname === "/auth/login" ? "bg-primary" : " "} hover:bg-primary font-bold py-2 px-4 rounded-tl-lg rounded-tr-lg inline-block mr-4`}>LOGIN</Link>
             </li>
 
             <li className="">
-            <Link href="/signUp" className={`link ${
-                pathname === "/signUp" ? "bg-primary" : " "} hover:bg-primary font-bold py-2 px-4 rounded-tl-lg rounded-tr-lg inline-block`}>Sign Up</Link>
+            <Link href="/auth/register" className={`link ${
+                pathname === "/auth/register" ? "bg-primary" : " "} hover:bg-primary font-bold py-2 px-4 rounded-tl-lg rounded-tr-lg inline-block`}>Sign Up</Link>
             </li>
+            <li>
+              <button onClick={() => { signOut() } }>
+                SignOut
+              </button>
+            </li>
+           
+            
+
+            
 
         
           </ul>
