@@ -3,12 +3,15 @@ import Button from "@/components/Button";
 import Title from "@/components/Title";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
-
+import { useRef } from "react";
 export default function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setValue,
+    reset,
   } = useForm();
   const router = useRouter();
 
@@ -34,6 +37,8 @@ export default function Register() {
       router.push("/auth/login");
     }
   });
+  const password = useRef(null);
+  password.current = watch("password", "");
 
   return (
     <div className="text-gray-200">
@@ -65,10 +70,10 @@ export default function Register() {
             <span className="text-red-500">{errors.username.message}</span>
           )}
           {errors.username?.type === "maxLength" && (
-            <span>Name must not be longer than 20 characters</span>
+            <span className="text-red-500">Name must not be longer than 20 characters</span>
           )}
           {errors.username?.type === "minLength" && (
-            <span>Name must be greater than 2 characters</span>
+            <span className="text-red-500">Name must be greater than 2 characters</span>
           )}
         </div>
 
@@ -102,6 +107,10 @@ export default function Register() {
               required: {
                 value: true,
                 message: "Please enter your e-mail",
+              },
+              pattern: {
+                value: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+                message: "Invalid email",
               },
             })}
           />
@@ -141,6 +150,10 @@ export default function Register() {
                 value: true,
                 message: "Please enter your password",
               },
+              minLength: {
+                value: 6,
+                message: "Password must be greater than 6 characters",
+              },
             })}
           />
           {errors.password && (
@@ -162,7 +175,14 @@ export default function Register() {
                 value: true,
                 message: "Please confirm your password",
               },
+              minLength: {
+                value: 6,
+                message: "Confirm password must be greater than 6 characters",
+              },
+              validate: (value) =>
+                value === password.current || "Passwords do not match",
             })}
+            
           />
           {errors.confirmPassword && (
             <span className="text-red-500">
