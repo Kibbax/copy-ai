@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
-import db from '../../../../lib/db' 
+import db from '@/lib/db' 
 import bcrypt from 'bcrypt'
 
 export const authOptions = {
@@ -35,8 +35,8 @@ export const authOptions = {
       },
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_ID,
-      clientSecret: process.env.GOOGLE_SECRET,
+      clientId: process.env.GOOGLE_CLIENT_ID,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
         
     }),
   ],
