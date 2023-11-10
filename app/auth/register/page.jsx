@@ -4,14 +4,13 @@ import Title from "@/components/Title";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
+
 export default function Register() {
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-    setValue,
-    reset,
   } = useForm();
   const router = useRouter();
 
@@ -70,28 +69,16 @@ export default function Register() {
             <span className="text-red-500">{errors.username.message}</span>
           )}
           {errors.username?.type === "maxLength" && (
-            <span className="text-red-500">Name must not be longer than 20 characters</span>
+            <span className="text-red-500">
+              Name must not be longer than 20 characters
+            </span>
           )}
           {errors.username?.type === "minLength" && (
-            <span className="text-red-500">Name must be greater than 2 characters</span>
+            <span className="text-red-500">
+              Name must be greater than 2 characters
+            </span>
           )}
         </div>
-
-        {/*   <div className="mb-4">
-          <label
-            htmlFor="surname"
-            className="block text-gray-700 text-sm font-bold mb-2"
-          >
-          </label>
-          <input
-            type="text"
-            id="surname"
-            name="surname"
-            placeholder="Surname"
-            className="w-full py-2 px-3 bg-zinc-500 bg-opacity-30 rounded-lg focus:outline-none"
-            required
-          />
-        </div> */}
 
         <div className="mb-4">
           <label
@@ -119,21 +106,31 @@ export default function Register() {
           )}
         </div>
 
-        {/* <div className="mb-4">
+        <div className="mb-4">
           <label
             htmlFor="confirmEmail"
             className="block text-gray-700 text-sm font-bold mb-2"
-          >
-          </label>
+          ></label>
           <input
             type="email"
             id="confirmEmail"
             name="confirmEmail"
             placeholder="Confirm E-mail"
             className="w-full py-2 px-3 bg-zinc-500 bg-opacity-30 rounded-lg focus:outline-none"
+            {...register("confirmEmail", {
+              required: {
+                value: true,
+                message: "Please confirm your e-mail",
+              },
+              validate: (value) =>
+                value === watch("email") || "Emails do not match",
+            })}
             required
           />
-        </div> */}
+          {errors.confirmEmail && (
+            <span className="text-red-500">{errors.confirmEmail.message}</span>
+          )}
+        </div>
 
         <div className="mb-4">
           <label
@@ -182,7 +179,6 @@ export default function Register() {
               validate: (value) =>
                 value === password.current || "Passwords do not match",
             })}
-            
           />
           {errors.confirmPassword && (
             <span className="text-red-500">
