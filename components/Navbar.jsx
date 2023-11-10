@@ -11,7 +11,7 @@ export default async function Navbar() {
   const session = await getServerSession(authOptions);
 
   return (
-    <nav className="bg-black bg-opacity-20">
+    <nav className="bg-black bg-opacity-60">
       <div className="fixed top-0 left-0 h-screen w-40 bg-stone-900 text-white hidden">
         <ul className="">
           <li className="py-4 border-b border-white">

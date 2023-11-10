@@ -172,7 +172,7 @@ export default function Register() {
           )}
         </div>
         <div className="m-auto text-center">
-          <Button text="Login" />
+          <Button text="Register" />
         </div>
       </form>
     </div>
