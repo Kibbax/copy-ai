@@ -10,4 +10,4 @@ export default function ButtonSignUpGoogle() {
       Login Google
     </button>
   );
-}
+} 
