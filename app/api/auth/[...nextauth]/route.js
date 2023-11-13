@@ -3,8 +3,9 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import db from '@/lib/db' 
 import bcrypt from 'bcrypt'
+import Register from "@/app/auth/registerGoogle/route";
 
-/* /* export const authOptions = {
+export const authOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
@@ -48,9 +49,9 @@ import bcrypt from 'bcrypt'
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
- */
+ 
 
-// Importaciones anteriores...
+/* // Importaciones anteriores...
 
 export const authOptions = {
   providers: [
@@ -123,7 +124,8 @@ export const authOptions = {
 
           // Crea el usuario en la base de datos
           console.log('User not found. Redirecting to registerG');
-          throw new Error('User not found. Redirecting to registerG');
+          Register();
+          //throw new Error('User not found. Redirecting to registerG');
           
         }
 
@@ -140,3 +142,4 @@ export const authOptions = {
 const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
+ */
