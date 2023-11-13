@@ -50,7 +50,9 @@ export default function InputPage() {
                 onChange={handleChange}
                 required
                 ></textarea>
-                <Button text={"Submit"}  />
+                <div className="m-auto text-center">
+                <Button text={"Submit"} />
+                </div>
             </form>
             
         </div>

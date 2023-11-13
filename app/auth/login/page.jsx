@@ -5,6 +5,7 @@ import { signIn } from "next-auth/react"
 import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
+import ButtonSignUpGoogle from "@/components/ButtonSignUpGoogle"
  
 
 export default function AuthPage() {
@@ -83,6 +84,7 @@ export default function AuthPage() {
   </div>
   <div className="m-auto text-center">
   <Button text="Login"/>
+  <ButtonSignUpGoogle/>
   </div>
 </form>
 </div>
