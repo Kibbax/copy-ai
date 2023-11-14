@@ -28,6 +28,12 @@ export const authOptions = {
 
         if (!matchPassword) throw new Error('Invalid email or password')
 
+        /* return Promise.resolve({
+          id: userFound.id,
+          name: userFound.name,
+          email: userFound.email,
+        }) */
+
         return {
             id: userFound.id,
             name: userFound.name,
