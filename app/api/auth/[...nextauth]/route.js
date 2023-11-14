@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import db from '@/lib/db' 
 import bcrypt from 'bcrypt'
-import Register from "@/app/auth/registerGoogle/route";
+
 
 export const authOptions = {
   providers: [
