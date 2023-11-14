@@ -1,23 +1,40 @@
 import db from '@/lib/db'
 import { authOptions } from '../../auth/[...nextauth]/route'
 import { getServerSession } from 'next-auth'
-
+import { NextResponse } from "next/server";
+import jwt from "next-auth/jwt";
 
 
 export const POST = async (req, res) => {
   const session = await getServerSession(authOptions)
+  const token = await jwt.getToken({ req })
+  console.log(token)
 
   if (!session) {
-    return res.status(401).json({ error: 'Unauthorized' });
+    return NextResponse.json({
+      message: "Unauthorized",
+    }, {
+      status: 401
+    });
   }
 
   const { prompt, value, targetAge } = req.body;
 
   if (!prompt) {
-    return res.status(400).json({ error: 'Missing required parameter: prompt.' });
+    return NextResponse.json({
+      message: "Missing prompt",
+    }, {
+      status: 400
+    });
   }
 
-  const userId = session.user.id;
+  const userFound = await db.user.findUnique({
+    where: {
+        email: credentials.email
+    }
+  })
+
+  
 
   const newInput = await db.content_input.create({
     data: {
