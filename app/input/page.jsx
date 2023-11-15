@@ -1,11 +1,9 @@
 "use client";
 import { useState } from "react";
-import { useForm } from "react-hook-form";
 import Button from "@/components/Button";
 import Title from "@/components/Title";
 
 export default function InputPage() {
-  const { handleSubmit } = useForm();
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -15,38 +13,44 @@ export default function InputPage() {
     setInput(e.target.value);
   };
 
-  const onSubmit = handleSubmit(async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     setIsLoading(true);
     setErrorMessage(null);
     setSuccessMessage(null);
 
-    const response = await fetch('/api/inputController', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        prompt: input,
-        networkType: "Instagram",
-        targetAge: '25',
-      }),
-      
-    });
+    try {
+      console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
 
-    
+      const response = await fetch('/api/input', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: input,
+          value: 'Instagram',
+          targetAge: 25,
+        }),
+      });
 
-    console.log(response)
+      console.log('Response status:', response.status);
 
-    if (!response.ok) {
-      console.error('Failed to submit data. Response status:', response.status);
-      setErrorMessage('Failed to submit data. Please try again.');
-    } else {
+      if (!response.ok) {
+        console.error('Failed to submit data. Response status:', response.status);
+        throw new Error('Failed to submit data');
+      }
+
       const data = await response.json();
       setSuccessMessage(data.message);
+    } catch (error) {
+      console.error('Error:', error);
+      setErrorMessage('Failed to submit data. Please try again.');
+    } finally {
+      setIsLoading(false);
     }
-
-    setIsLoading(false);
-  });
+  };
 
   return (
     <div className="flex justify-center pt-36 md:w-1/2 lg:w-1/3 m-auto">
@@ -54,7 +58,7 @@ export default function InputPage() {
         <div className="w-full">
           <Title text={"Create your plan"} />
         </div>
-        <form className="flex flex-col justify-center w-full h-[320px]" onSubmit={onSubmit}>
+        <form className="flex flex-col justify-center w-full h-[320px]" onSubmit={handleSubmit}>
           <label className="text-fontWhite text-xl mb-5" htmlFor="ideaInput">
             Input your idea:
           </label>

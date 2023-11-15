@@ -49,6 +49,25 @@ export const authOptions = {
   ],
   pages: {
     signIn: "/auth/login",
+  },
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if(account?.provider === 'google') {
+        token.accessToken = account?.accessToken
+        
+      }
+      
+     /*  if (user) {
+        token.id = user.id;
+      } */
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+      }
+      return session;
+    },
   }
 }; 
 

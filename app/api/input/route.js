@@ -22,7 +22,7 @@ export const POST = async (req, res) => {
     });
   }
 
-  const { prompt, value, targetAge } = req.body;
+  const { prompt, value, targetAge } = data;
 
   if (!prompt) {
     return NextResponse.json({
@@ -31,24 +31,33 @@ export const POST = async (req, res) => {
       status: 400
     });
   }
-
-  const userFound = await db.user.findUnique({
-    where: {
-        email: session.user.email
-    }
-  })
-
+  try{
+    const userFound = await db.user.findUnique({
+      where: {
+          email: session.user.email
+      }
+    })
   
-
-  const newInput = await db.content_input.create({
-    data: {
-      userId: userFound.id,
-      content: prompt,
-      networkType: value,
-      targetAge: targetAge,
-    }
-  });
-  console.log(newInput)
-  return NextResponse.json(newInput);
+    
+  
+    const newInput = await db.ContentInput.create({
+      data: {
+        userId: userFound.id,
+        content: prompt,
+        networkType: value,
+        targetAge: targetAge,
+      }
+    });
+    return NextResponse.json(newInput);
+    console.log(newInput)
+  }catch(error){
+    console.log(error)
+    return NextResponse.json({
+      message: "Something went wrong",
+    }, {
+      status: 500
+    });
+  }
+  
 
 }
