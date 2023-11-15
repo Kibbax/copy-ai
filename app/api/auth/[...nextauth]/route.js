@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import db from '@/lib/db' 
 import bcrypt from 'bcrypt'
-import Register from "@/app/auth/registerGoogle/route";
+
 
 export const authOptions = {
   providers: [
@@ -28,6 +28,12 @@ export const authOptions = {
 
         if (!matchPassword) throw new Error('Invalid email or password')
 
+        /* return Promise.resolve({
+          id: userFound.id,
+          name: userFound.name,
+          email: userFound.email,
+        }) */
+
         return {
             id: userFound.id,
             name: userFound.name,
@@ -43,6 +49,25 @@ export const authOptions = {
   ],
   pages: {
     signIn: "/auth/login",
+  },
+  callbacks: {
+    async jwt({ token, user, account }) {
+      if(account?.provider === 'google') {
+        token.accessToken = account?.accessToken
+        
+      }
+      
+     /*  if (user) {
+        token.id = user.id;
+      } */
+      return token;
+    },
+    async session({ session, token }) {
+      if (token) {
+        session.user.id = token.id;
+      }
+      return session;
+    },
   }
 }; 
 
