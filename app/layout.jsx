@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar"
 import './globals.css'
 import Button from "@/components/Button"
 import Background from "@/components/Background"
+import { Toaster } from "sonner"
  
 export const metadata = {
   title: 'Copy AI',
@@ -15,6 +16,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <Background/>
           {children}
+          <Toaster />
         </body>
       </html>
     )
