@@ -2,16 +2,43 @@
 import Button from "@/components/Button";
 import Title from "@/components/Title";
 import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 export default function Register() {
+  const schema = yup.object().shape({
+    username: yup.string().required("Please enter your name"),
+    email: yup
+      .string()
+      .email("Please enter a valid email")
+      .required("Please enter your email"),
+    confirmEmail: yup
+      .string()
+      .oneOf([yup.ref("email"), null], "Emails must match")
+      .required("Please confirm your email"),
+    password: yup
+      .string()
+      .min(6, "Password must be greater than 6 characters")
+      .required("Please enter your password"),
+    confirmPassword: yup
+      .string()
+      .oneOf(
+        [yup.ref("password"), null],
+        "Changuite las contraseñas no coinciden"
+      )
+      .required("Please confirm your password"),
+  });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
-  } = useForm();
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
   const router = useRouter();
 
   const onSubmit = handleSubmit(async (data) => {
@@ -35,6 +62,7 @@ export default function Register() {
     if (res.ok) {
       router.push("/auth/login");
     }
+    reset();
   });
   const password = useRef(null);
   password.current = watch("password", "");
