@@ -14,7 +14,7 @@ export const authOptions = {
         password: { label: "Password", type: "password", placeholder: "*****" },
       },
       async authorize(credentials, req) {
-        console.log(credentials)
+       /*  console.log(credentials) */
 
         const userFound = await db.user.findUnique({
             where: {
@@ -53,7 +53,7 @@ export const authOptions = {
   callbacks: {
     async jwt({ token, user, account }) {
       if(account?.provider === 'google') {
-        token.accessToken = account?.accessToken
+        token.accessToken = account?.accessToken 
         
       }
       
