@@ -4,6 +4,7 @@ import Button from "@/components/Button";
 import Title from "@/components/Title";
 import { toast } from 'sonner';
 import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react";
 
 
 
@@ -13,6 +14,8 @@ export default function InputPage() {
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
   const router = useRouter();
+  const { data: session } = useSession();
+  console.log(session)
 
 
   const handleChange = (e) => {
