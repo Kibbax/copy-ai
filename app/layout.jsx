@@ -1,8 +1,7 @@
-import Title from "@/components/Title"
 import Navbar from "../components/Navbar"
 import './globals.css'
-import Button from "@/components/Button"
 import Background from "@/components/Background"
+import Head from "next/head"
  
 export const metadata = {
   title: 'Copy AI',
@@ -11,6 +10,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
       <html lang="en">
+        <Head>
+          <link rel="icon" href="/Group-8.ico" sizes="any" />
+        </Head>
         <body className="bg-primary font-textFont text-fontWhite" >
           <Navbar />
           <Background/>
@@ -19,3 +21,5 @@ export default function RootLayout({ children }) {
       </html>
     )
   }
+
+
