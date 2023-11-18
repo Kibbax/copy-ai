@@ -6,14 +6,17 @@ import { useForm } from "react-hook-form"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
 import ButtonSignUpGoogle from "@/components/ButtonSignUpGoogle"
+import { toast } from 'sonner';
  
 
 export default function AuthPage() {
   const {register, handleSubmit, formState:{errors}} = useForm()
   const router = useRouter();
   const [error, setError] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
 
   const onSubmit= handleSubmit(async data => {
+    setIsLoading(true)
      const res = await signIn("credentials", {
       email: data.email,
       password: data.password,
@@ -21,7 +24,8 @@ export default function AuthPage() {
      })
     
      if(res.error){
-      setError(res.error)     
+      setError(res.error) 
+      setIsLoading(false)    
      }else{
       router.push('/input')
       router.refresh()
@@ -55,6 +59,7 @@ export default function AuthPage() {
           message: "Email is required"
         }
       })}
+      
     />
     {errors.email && (
             <span className="text-red-500">
@@ -83,8 +88,8 @@ export default function AuthPage() {
             </span>
           )}
   </div>
-  <div className="m-auto text-center">
-  <Button text="Login"/>
+  <div className="m-auto text-center" onClick={()=>{setError(null)}}>
+  <Button text={isLoading? "Loading...": "Login"}  />
   <ButtonSignUpGoogle/>
   </div>
 </form>
