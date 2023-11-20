@@ -2,12 +2,21 @@
 import { useState } from "react";
 import Button from "@/components/Button";
 import Title from "@/components/Title";
+import { toast } from 'sonner';
+import { useRouter } from "next/navigation"
+import { useSession } from "next-auth/react";
+
+
 
 export default function InputPage() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
+  const router = useRouter();
+  const { data: session } = useSession();
+  console.log(session)
+
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -69,6 +78,9 @@ export default function InputPage() {
             placeholder="Enter your idea"
             onChange={handleChange}
             required
+            onClick={() => toast.custom(() => <div> We recommend that you register <button onClick={()=> {toast.dismiss(); router.push('/auth/register')}} className="underline" >Register</button></div> ,{
+              duration: 5000 
+            })}
           ></textarea>
           <div className="m-auto text-center">
             <Button text={"Submit"} disabled={isLoading} />
@@ -76,7 +88,8 @@ export default function InputPage() {
             {errorMessage && <p className="text-red-500">{errorMessage}</p>}
             {successMessage && <p className="text-green-500">{successMessage}</p>}
           </div>
-        </form>
+        </form>    
+       
       </div>
     </div>
   );

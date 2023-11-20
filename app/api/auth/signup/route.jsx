@@ -7,7 +7,7 @@ export async function POST(req) {
   try {
     // Parsea los datos JSON de la solicitud
     const data = await req.json();
-
+    
     // Busca al usuario en la base de datos por correo electrónico
     const userFound = await db.user.findUnique({
       where: {
