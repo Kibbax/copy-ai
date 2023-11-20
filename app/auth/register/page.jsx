@@ -62,7 +62,7 @@ export default function Register() {
     if (res.ok) {
       router.push("/auth/login");
     }
-    reset();
+    /* reset(); */
   });
   const password = useRef(null);
   password.current = watch("password", "");

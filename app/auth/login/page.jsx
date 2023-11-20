@@ -38,7 +38,7 @@ export default function AuthPage() {
       router.push("/input");
       router.refresh();
     }
-    reset();
+    /* reset(); */
   });
 
   return (

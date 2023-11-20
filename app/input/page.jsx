@@ -22,7 +22,7 @@ export default function InputPage() {
 
     try {
       console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
-
+      
       const response = await fetch('/api/input', {
         method: 'POST',
         headers: {
