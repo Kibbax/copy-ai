@@ -2,6 +2,9 @@
 
 | [English](README.md) | [Español](README.es.md) | 
 
+![CopyCraft Pro Logo](./public/Logo%2050x50%20svg.svg)
+
+
 1. [Developers](#developers)
 2. [Highlighted Technologies and Tools](#highlighted-technologies-and-tools)
 3. [Project Objective](#project-objective)
