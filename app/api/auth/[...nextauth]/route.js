@@ -14,7 +14,6 @@ export const authOptions = {
         password: { label: "Password", type: "password", placeholder: "*****" },
       },
       async authorize(credentials, req) {
-        console.log(credentials)
 
         const userFound = await db.user.findUnique({
             where: {
@@ -68,6 +67,31 @@ export const authOptions = {
       }
       return session;
     },
+
+    //verifico si es que el usuario esta logueado con google por primera vez, si es asi lo registro en la DB
+    async signIn({user, account, profile}) {
+        if (account?.provider === 'google') {
+          const userFound = await db.user.findUnique({
+            where: {
+              email: profile.email,
+            },
+          });
+  
+          if (!userFound) {
+            const newUser = await db.user.create({
+              data: {
+                name: profile.name,
+                email: profile.email,
+              },
+            });
+          }
+        }
+
+        return true
+     
+   }
+      
+
   }
 }; 
 
@@ -143,7 +167,7 @@ export const authOptions = {
             email: profile.email,
           },
         });
-
+     
         if (!userFound) {
           // El usuario no existe, redirige a la página "registerG"
 
