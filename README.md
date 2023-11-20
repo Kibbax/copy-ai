@@ -2,7 +2,8 @@
 
 | [English](README.md) | [Español](README.es.md) | 
 
-![Logo](https://ibb.co/dWty6pp)
+![CopyCraft Pro Logo](./public/Logo%2050x50%20svg.svg)
+
 
 1. [Developers](#developers)
 2. [Highlighted Technologies and Tools](#highlighted-technologies-and-tools)
