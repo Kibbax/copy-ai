@@ -1,5 +1,9 @@
 # CopyCraft Pro - Plataforma Revolucionaria de Copywriting con Inteligencia Artificial
 
+| [English](README.md) | [Español](README.es.md) | 
+
+![CopyCraft Pro Logo](./public/images/PNG-para-el-Readme.png)
+
 1. [Desarrolladores](#desarrolladores)
 2. [Tecnologías y Herramientas Destacadas](#tecnologías-y-herramientas-destacadas)
 3. [Objetivo del Proyecto](#objetivo-del-proyecto)
