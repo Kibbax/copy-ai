@@ -2,6 +2,8 @@
 
 | [English](README.md) | [Español](README.es.md) | 
 
+![Logo](https://ibb.co/dWty6pp)
+
 1. [Developers](#developers)
 2. [Highlighted Technologies and Tools](#highlighted-technologies-and-tools)
 3. [Project Objective](#project-objective)
