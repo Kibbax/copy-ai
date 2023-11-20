@@ -1,39 +1,56 @@
-"use client"
-import Button from "@/components/Button"
-import Title from "@/components/Title"
-import { signIn } from "next-auth/react"
-import { useForm } from "react-hook-form"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import ButtonSignUpGoogle from "@/components/ButtonSignUpGoogle"
- 
+"use client";
+import Button from "@/components/Button";
+import Title from "@/components/Title";
+import { signIn } from "next-auth/react";
+import { useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import ButtonSignUpGoogle from "@/components/ButtonSignUpGoogle";
+import { toast } from 'sonner';
 
 export default function AuthPage() {
-  const {register, handleSubmit, formState:{errors}} = useForm()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(
+      yup.object().shape({
+        email: yup.string().email().required("chango el email porfa"),
+        password: yup.string().required().min(6),
+      })
+    ),
+  });
   const router = useRouter();
-  const [error, setError] = useState(null)
 
-  const onSubmit= handleSubmit(async data => {
-     const res = await signIn("credentials", {
+  const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const onSubmit = handleSubmit(async (data) => {
+    setIsLoading(true)
+    const res = await signIn("credentials", {
       email: data.email,
       password: data.password,
-      redirect: false
-     })
-    
-     if(res.error){
-      setError(res.error)     
-     }else{
-      router.push('/input')
-      router.refresh()
-     }
- 
-  })
+      redirect: false,
+    });
 
-  return <div className="text-gray-200 pt-36">
-    <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-10 pb-10">
-      <Title text="LOGIN"/>
-    <h2>Do you have an account in a COPY.AI?</h2>
-    </div>
+    if (res.error) {
+      setError(res.error);
+    } else {
+      router.push("/input");
+      router.refresh();
+    }
+    /* reset(); */
+  });
+
+  return (
+    <div className="text-gray-200 pt-36">
+      <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-10 pb-10">
+        <Title text="LOGIN" />
+        <h2>Do you have an account in a COPY.AI?</h2>
+      </div>
   <form className="w-3/4 md:w-1/2 lg:w-1/3 m-auto  " onSubmit={onSubmit} /* onSubmit={e => signIn("credentials", { email: e.target.email.value, password: e.target.password.value })} */>
   <div className="mb-4">
 
@@ -55,6 +72,7 @@ export default function AuthPage() {
           message: "Email is required"
         }
       })}
+      
     />
     {errors.email && (
             <span className="text-red-500">
@@ -74,7 +92,7 @@ export default function AuthPage() {
         required: {
           value:true,
           message: "Password is required"
-        } } )
+        } } ) 
       }
     />
     {errors.password && (
@@ -83,10 +101,10 @@ export default function AuthPage() {
             </span>
           )}
   </div>
-  <div className="m-auto text-center">
-  <Button text="Login"/>
+  <div className="m-auto text-center" onClick={()=>{setError(null)}}>
+  <Button text={isLoading? "Loading...": "Login"}  />
   <ButtonSignUpGoogle/>
   </div>
 </form>
 </div>
-}
+)}
