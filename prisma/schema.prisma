@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL")
+  directUrl = env("POSTGRES_URL_NON_POOLING")
+}
+
+model User {
+  id       Int            @id @default(autoincrement())
+  name     String
+  email    String         @unique
+  password String?
+  inputs   ContentInput[]
+  teams    UsersTeams[]
+
+  @@map("user")
+}
+
+model ContentInput {
+  id          Int      @id @default(autoincrement())
+  userId      Int      @map("user_id")
+  content     String
+  networkType String   @map("network_type")
+  targetAge   Int      @map("target_age")
+  user        User     @relation(fields: [userId], references: [id])
+  results     Result[]
+
+  @@map("content_input")
+}
+
+model Result {
+  id      Int          @id @default(autoincrement())
+  inputId Int          @map("input_id")
+  result  String
+  date    DateTime     @default(now())
+  input   ContentInput @relation(fields: [inputId], references: [id])
+
+  @@map("result")
+}
+
+model Team {
+  id          Int          @id @default(autoincrement())
+  name        String
+  description String
+  users       UsersTeams[]
+}
+
+model UsersTeams {
+  userId Int
+  teamId Int
+  team   Team @relation(fields: [teamId], references: [id])
+  user   User @relation(fields: [userId], references: [id])
+
+  @@id([userId, teamId])
+  @@map("users_teams")
+}
