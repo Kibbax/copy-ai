@@ -2,7 +2,7 @@
 
 | [English](README.md) | [Español](README.es.md) | 
 
-![CopyCraft Pro Logo](./public/images/PNG-para-el-Readme.png)
+
 
 1. [Developers](#developers)
 2. [Highlighted Technologies and Tools](#highlighted-technologies-and-tools)

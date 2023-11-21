@@ -2,7 +2,7 @@
 
 | [English](README.md) | [Español](README.es.md) | 
 
-![Logo de CopyCraft Pro](./public/images/PNG-para-el-Readme.png)
+
 
 1. [Desarrolladores](#desarrolladores)
 2. [Tecnologías y Herramientas Destacadas](#tecnologías-y-herramientas-destacadas)
@@ -155,5 +155,5 @@ La arquitectura de tres niveles de la aplicación asegura un diseño escalable y
 
 ¡Gracias por elegir CopyCraft Pro! Esperamos que disfrutes de una experiencia de usuario excepcional y productiva. Si tienes alguna pregunta o sugerencia, no dudes en ponerte en contacto con nuestro equipo de desarrollo. ¡Feliz escritura!
 
-![Logo](https://ibb.co/dWty6pp)
+
 
