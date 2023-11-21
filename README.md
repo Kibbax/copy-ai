@@ -130,7 +130,7 @@ The three-tier architecture of the application ensures a
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/copycraft-pro.git
+   git clone https://github.com/Kibbax/copy-ai.git
    ```
 
 2. **Install Dependencies:**
