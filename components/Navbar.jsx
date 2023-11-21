@@ -66,11 +66,22 @@ export default async function Navbar() {
                 </Link>
               </li>
             </>
-            
           ) : (
-            <li>
-              <LogOutButton />
-            </li>        
+            <>
+              <li className="">
+                <Link href="/download">
+                  <NavbarButton text="history" route="/download" />
+                </Link>
+              </li>
+              <li className="">
+                <Link href="/input">
+                  <NavbarButton text="Input Prompt" route="/input" />
+                </Link>
+              </li>
+              <li>
+                <LogOutButton />
+              </li>
+            </>
           )}
         </ul>
       </div>
