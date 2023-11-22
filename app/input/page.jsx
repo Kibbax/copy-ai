@@ -15,7 +15,7 @@ export default function InputPage() {
   const [successMessage, setSuccessMessage] = useState(null);
   const router = useRouter();
   const { data: session } = useSession();
-  console.log(session)
+  // console.log(session)
 
 
   const handleChange = (e) => {
@@ -30,9 +30,9 @@ export default function InputPage() {
     setSuccessMessage(null);
 
     try {
-      console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
+      // console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
       
-      const response = await fetch('/api/input', {
+      const response = await fetch('/api/request', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -42,7 +42,10 @@ export default function InputPage() {
           value: 'Instagram',
           targetAge: 25,
         }),
+
       });
+      const res = await response.json()
+      console.log(res)
 
       console.log('Response status:', response.status);
 
