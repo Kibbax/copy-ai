@@ -13,6 +13,8 @@ export default function InputPage() {
   const [successMessage, setSuccessMessage] = useState(null);
   const router = useRouter();
   const { data: session } = useSession();
+  // console.log(session)
+
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -26,14 +28,10 @@ export default function InputPage() {
     setSuccessMessage(null);
 
     try {
-      console.log("Sending request with data:", {
-        prompt: input,
-        value: "Instagram",
-        targetAge: 25,
-      });
-
-      const response = await fetch("/api/input", {
-        method: "POST",
+      // console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
+      
+      const response = await fetch('/api/request', {
+        method: 'POST',
         headers: {
           "Content-Type": "application/json",
         },
@@ -42,7 +40,12 @@ export default function InputPage() {
           value: "Instagram",
           targetAge: 25,
         }),
+
       });
+      const res = await response.json()
+      console.log(res)
+
+      console.log('Response status:', response.status);
 
       if (!response.ok) {
         console.error(
@@ -52,8 +55,8 @@ export default function InputPage() {
         throw new Error("Failed to submit data");
       }
 
-      const data = await response.json();
-      setSuccessMessage(data.message);
+     /*  const data = await response.json();
+      setSuccessMessage(data.message); */
     } catch (error) {
       setErrorMessage("Failed to submit data. Please try again.");
     } finally {
