@@ -54,8 +54,8 @@ export default function InputPage() {
         throw new Error('Failed to submit data');
       }
 
-      const data = await response.json();
-      setSuccessMessage(data.message);
+     /*  const data = await response.json();
+      setSuccessMessage(data.message); */
     } catch (error) {
       console.error('Error:', error);
       setErrorMessage('Failed to submit data. Please try again.');

@@ -1,41 +1,42 @@
-// import { NextResponse } from "next/server";
-// import OpenAI from "openai";
-
-// const openai = new OpenAI({
-//    apiKey: process.env.OPENAI_API_KEY,
-// });
+import { NextResponse } from "next/server";
+import OpenAI from "openai";
 
 
-// export const POST = async(request)=>{
-//     const body = await request.json()
-//     console.log(body)
-
-//     const chatCompletion = await openai.chat.completions.create({
-//         messages: [{ role: "user", content: "Say this is a test" }],
-//         model: "gpt-3.5-turbo",
-//     });
-// }
 
 
-// export const POST = async (request) => {
+/* export const POST = async(request)=>{
+    const body = await request.json()
+    console.log(body)
 
-//   try {
-//     const body = await request.json();
-//     const chatCompletion = await openai.chat.completions.create({
-//       messages: [{ role: "user", content: "suerte"}],
-//       model: "gpt-3.5-turbo",
-//     //   temperature: 0.7,
-//     //   max_tokens: 60,
-//     });
-//     console.log(chatCompletion.choices[0]);
-//      return NextResponse.json(chatCompletion.data.choices[0].text);
+    const chatCompletion = await openai.chat.completions.create({
+        messages: [{ role: "user", content: "Say this is a test" }],
+        model: "gpt-3.5-turbo",
+    });
+} */
+
+
+export const POST = async (request) => {
+  const openai = new OpenAI({
+    apiKey: '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',
+ });
+
+  try {
+    const body = await request.json();
+    const chatCompletion = await openai.chat.completions.create({
+      messages: [{ role: "user", content: body.prompt}],
+      model: "gpt-3.5-turbo",
+    //   temperature: 0.7,
+    //   max_tokens: 60,
+    });
+    console.log(chatCompletion.choices[0].message.content);
+     return NextResponse.json(chatCompletion.choices[0].message.content);
     
-//   } catch (error) {
-//     // console.error(error)
-//   }
+  } catch (error) {
+    console.error(error)
+  }
   
-// };
-import { Configuration, OpenAIApi } from "openai";
+};
+/* import { Configuration, OpenAIApi } from "openai";
 import { NextResponse } from "next/server";
 
 const configuration = new Configuration({
@@ -72,4 +73,4 @@ export async function POST(request) {
   } catch (error) {
     return NextResponse.error(error, { status: 500 });
   }
-}
+} */
