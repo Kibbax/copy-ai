@@ -9,14 +9,8 @@ import { toast } from "sonner";
 const Page = () => {
   const {result} = useResult()
   const copyToClipboar = () => {
-    const aux = document.createElement("input");
-    aux.setAttribute("value", result);
-    document.body.appendChild(aux);
-    aux.select();
-    document.execCommand("copy");
-    document.body.removeChild(aux);
-    
-    //aviso de texto copiado en portapapeles
+    navigator.clipboard.writeText(result).then(()=>{
+      //aviso de texto copiado en portapapeles
     toast.success("Copied",{
       position: "top-center",
       style: {
@@ -27,7 +21,7 @@ const Page = () => {
       },
       duration: 1000
     })
-
+    })
   }
   
   return (
