@@ -1,6 +1,6 @@
 export default function Logo() {
     return (
-      <div className="">
+      <div className="grid grid-cols-3 grid-rows-3 gap-2 w-[130px] m-auto mt-20">
         {/* Rectángulo 1 */}
         <div className="bg-red-500 w-[80px] h-[40px] rounded-bl-full rounded-tr-full col-span-2 row-span-1"></div>
   

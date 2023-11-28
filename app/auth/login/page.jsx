@@ -92,7 +92,7 @@ export default function AuthPage() {
         required: {
           value:true,
           message: "Password is required"
-        } } )
+        } } ) 
       }
     />
     {errors.password && (
