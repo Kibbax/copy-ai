@@ -3,11 +3,32 @@ import Button from "@/components/Button";
 import Title from "@/components/Title";
 import { useResult } from "../../context/resultContext";
 import { FiCopy } from "react-icons/fi";
+import { toast } from "sonner";
 
 
 const Page = () => {
   const {result} = useResult()
-  console.log(result);
+  const copyToClipboar = () => {
+    const aux = document.createElement("input");
+    aux.setAttribute("value", result);
+    document.body.appendChild(aux);
+    aux.select();
+    document.execCommand("copy");
+    document.body.removeChild(aux);
+    
+    //aviso de texto copiado en portapapeles
+    toast.success("Copied",{
+      position: "top-center",
+      style: {
+        margin: "auto",
+        width: "15%",
+        padding: "2px",
+        paddingLeft: "6px",   
+      },
+      duration: 1000
+    })
+
+  }
   
   return (
     <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-20 pb-10 text-gray-200 relative">
@@ -21,7 +42,7 @@ const Page = () => {
           <p className="w-11/12 whitespace-pre-line break-words m-auto mt-2 mb-1">
             {result}
           </p>
-          <div title="copy" className="absolute opacity-30 hover:opacity-100 top-1 right-1">
+          <div title="copy" className="absolute opacity-30 hover:opacity-100 top-1 right-1" onClick={copyToClipboar}>
            <FiCopy/>
           </div>
         </div>

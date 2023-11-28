@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
           <Navbar />
           <Background/>
           {children}
-          <Toaster />
+          <Toaster richColors />
           </ResultProvider> 
           </Providers>
         </body>
