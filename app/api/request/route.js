@@ -1,5 +1,8 @@
 import { NextResponse } from "next/server";
 import OpenAI from "openai";
+import db from '@/lib/db'
+import { authOptions } from '../auth/[...nextauth]/route'
+import { getServerSession } from 'next-auth'
 
 
 
@@ -17,7 +20,7 @@ import OpenAI from "openai";
 
 export const POST = async (request) => {
   const openai = new OpenAI({
-    apiKey: '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',
+    apiKey: process.env.OPENAI_API_KEY,
  });
 
   try {
@@ -28,8 +31,30 @@ export const POST = async (request) => {
     //   temperature: 0.7,
     //   max_tokens: 60,
     });
-    console.log(chatCompletion.choices[0].message.content);
+    /* console.log(chatCompletion.choices[0].message.content); */
+    const session = await getServerSession(authOptions)
+    const userFound = await db.user.findUnique({
+      where: {
+          email: session.user.email
+      },
+      include:{
+        inputs: {
+          select: {
+            id:true,
+          }
+        }
+      }
+    })
+    const input = userFound.inputs
+    
+    const newResult = await db.Result.create({
+      data: {
+        inputId: input[input.length - 1].id,
+        result: chatCompletion.choices[0].message.content,
+      }
+    });
      return NextResponse.json(chatCompletion.choices[0].message.content);
+
     
   } catch (error) {
     console.error(error)

@@ -2,9 +2,10 @@
 import { useState } from "react";
 import Button from "@/components/Button";
 import Title from "@/components/Title";
-import { toast } from 'sonner';
 import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react";
+import { useResult } from "../../context/resultContext"; 
+
 
 
 
@@ -15,8 +16,7 @@ export default function InputPage() {
   const [successMessage, setSuccessMessage] = useState(null);
   const router = useRouter();
   const { data: session } = useSession();
-  // console.log(session)
-
+  const { newResult } = useResult();
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -31,6 +31,18 @@ export default function InputPage() {
 
     try {
       // console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
+      const saveInput = await fetch('/api/input', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: input,
+          value: 'Instagram',
+          targetAge: 25,
+        }),
+
+      });
       
       const response = await fetch('/api/request', {
         method: 'POST',
@@ -45,13 +57,18 @@ export default function InputPage() {
 
       });
       const res = await response.json()
-      console.log(res)
+      newResult(res)
+      
+      /* console.log(res)
+      console.log(response.ok)
 
-      console.log('Response status:', response.status);
+      console.log('Response status:', response.status); */
 
       if (!response.ok) {
         console.error('Failed to submit data. Response status:', response.status);
         throw new Error('Failed to submit data');
+      }{
+        router.push("/result");
       }
 
      /*  const data = await response.json();
@@ -81,13 +98,9 @@ export default function InputPage() {
             placeholder="Enter your idea"
             onChange={handleChange}
             required
-            onClick={() => toast.custom(() => <div> We recommend that you register <button onClick={()=> {toast.dismiss(); router.push('/auth/register')}} className="underline" >Register</button></div> ,{
-              duration: 5000 
-            })}
           ></textarea>
           <div className="m-auto text-center">
-            <Button text={"Submit"} disabled={isLoading} />
-            {isLoading && <p>Loading...</p>}
+            <Button text={isLoading? "Loading...": "Submit"} disabled={isLoading} />
             {errorMessage && <p className="text-red-500">{errorMessage}</p>}
             {successMessage && <p className="text-green-500">{successMessage}</p>}
           </div>
