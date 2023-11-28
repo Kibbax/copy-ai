@@ -9,7 +9,7 @@ const HomePage = () => {
           Revolutionize Your Marketing
         </p>
         <p className="mb-8 text-xl md:text-3xl font-titleFont">Unleash CopyCraft Pro’s Power</p>
-        <Link href="/signUp" className=" border border-#E0AAFF rounded-full bg-pink-300  hover:bg-blue-600 text-primary font-textFont font-bold py-3 px-6 md:py-4 md:px-8 mt-4 md:mt-8 w-1/2">
+        <Link href="auth/register" className=" border border-#E0AAFF rounded-full bg-pink-300  hover:bg-blue-600 text-primary font-textFont font-bold py-3 px-6 md:py-4 md:px-8 mt-4 md:mt-8 w-1/2">
           
             Sign Up Now
           
