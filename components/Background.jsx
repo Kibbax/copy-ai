@@ -5,7 +5,7 @@ const Background = () => {
     <>
       <div className="-z-10">
         {/* Logo */}
-        <div className="fixed grid grid-cols-3 grid-rows-3 gap-2 w-[130px] m-auto mt-20 opacity-30 left-[40rem]">
+        <div className="fixed grid grid-cols-3 grid-rows-3 gap-2 w-[130px] m-auto mt-20 opacity-30 left-[50rem] scale-150">
           {/* Rectángulo 1 */}
           <div className="bg-violet-800 w-[80px] h-[40px] rounded-bl-full rounded-tr-full col-span-2 row-span-1"></div>
 
