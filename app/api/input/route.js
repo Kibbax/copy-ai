@@ -7,7 +7,6 @@ import jwt from "next-auth/jwt";
 
 export const POST = async (req, res) => {
   const session = await getServerSession(authOptions)
-  console.log(session)
 
   const data = await req.json();
 
@@ -49,7 +48,6 @@ export const POST = async (req, res) => {
       }
     });
     return NextResponse.json(newInput);
-    console.log(newInput)
   }catch(error){
     console.log(error)
     return NextResponse.json({

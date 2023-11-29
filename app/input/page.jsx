@@ -2,9 +2,12 @@
 import { useState } from "react";
 import Button from "@/components/Button";
 import Title from "@/components/Title";
-
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"
 import { useSession } from "next-auth/react";
+import { useResult } from "../../context/resultContext"; 
+
+
+
 
 export default function InputPage() {
   const [input, setInput] = useState("");
@@ -13,7 +16,7 @@ export default function InputPage() {
   const [successMessage, setSuccessMessage] = useState(null);
   const router = useRouter();
   const { data: session } = useSession();
-  // console.log(session)
+  const { newResult } = useResult();
 
   const handleChange = (e) => {
     setInput(e.target.value);
@@ -28,9 +31,21 @@ export default function InputPage() {
 
     try {
       // console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
+      const saveInput = await fetch('/api/input', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          prompt: input,
+          value: 'Instagram',
+          targetAge: 25,
+        }),
 
-      const response = await fetch("/api/request", {
-        method: "POST",
+      });
+      
+      const response = await fetch('/api/request', {
+        method: 'POST',
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,18 +55,19 @@ export default function InputPage() {
           targetAge: 25,
         }),
       });
+      const res = await response.json()
+      newResult(res)
+      
+      /* console.log(res)
+      console.log(response.ok)
 
-      const res = await response.json();
-      console.log(res);
-
-      console.log("Response status:", response.status);
+      console.log('Response status:', response.status); */
 
       if (!response.ok) {
-        console.error(
-          "Failed to submit data. Response status:",
-          response.status
-        );
-        throw new Error("Failed to submit data");
+        console.error('Failed to submit data. Response status:', response.status);
+        throw new Error('Failed to submit data');
+      }{
+        router.push("/result");
       }
 
       /*  const data = await response.json();
