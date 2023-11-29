@@ -46,23 +46,37 @@ export default async function Navbar() {
         </ul>
       </div>
 
-      <div className="w-screen flex items-center justify-between ">
+      <div
+        className="w-screen flex items-center justify-between"
+        aria-label="Header Navigation"
+      >
         <div>
-          <Link href="/" className="m-4">
+          <Link href="/" className="m-4" aria-label="Navigate to Home">
             COPY.AI
           </Link>
         </div>
-        <ul className="flex items-center justify-between pt-2 ">
+        <ul
+          className="flex items-center justify-between pt-2"
+          aria-label="Main Navigation"
+        >
           {!session?.user ? (
             <>
               <li className="">
                 <Link href="/auth/login">
-                  <NavbarButton text="Login" route="/auth/login" />
+                  <NavbarButton
+                    text="Login"
+                    route="/auth/login"
+                    aria-label="Navigate to Login Page"
+                  />
                 </Link>
               </li>
               <li className="">
                 <Link href="/auth/register">
-                  <NavbarButton text="Sign Up" route="/auth/register" />
+                  <NavbarButton
+                    text="Sign Up"
+                    route="/auth/register"
+                    aria-label="Navigate to Sign Up Page"
+                  />
                 </Link>
               </li>
             </>
@@ -70,15 +84,23 @@ export default async function Navbar() {
             <>
               <li className="">
                 <Link href="/download">
-                  <NavbarButton text="history" route="/download" />
+                  <NavbarButton
+                    text="History"
+                    route="/download"
+                    aria-label="Navigate to Download Page"
+                  />
                 </Link>
               </li>
               <li className="">
                 <Link href="/input">
-                  <NavbarButton text="Input Prompt" route="/input" />
+                  <NavbarButton
+                    text="Input Prompt"
+                    route="/input"
+                    aria-label="Navigate to Input Page"
+                  />
                 </Link>
               </li>
-              <li>
+              <li aria-label="Log Out">
                 <LogOutButton />
               </li>
             </>

@@ -15,7 +15,6 @@ export default function InputPage() {
   const { data: session } = useSession();
   // console.log(session)
 
-
   const handleChange = (e) => {
     setInput(e.target.value);
   };
@@ -29,9 +28,9 @@ export default function InputPage() {
 
     try {
       // console.log('Sending request with data:', { prompt: input, value: 'Instagram', targetAge: 25 });
-      
-      const response = await fetch('/api/request', {
-        method: 'POST',
+
+      const response = await fetch("/api/request", {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
@@ -40,12 +39,12 @@ export default function InputPage() {
           value: "Instagram",
           targetAge: 25,
         }),
-
       });
-      const res = await response.json()
-      console.log(res)
 
-      console.log('Response status:', response.status);
+      const res = await response.json();
+      console.log(res);
+
+      console.log("Response status:", response.status);
 
       if (!response.ok) {
         console.error(
@@ -55,7 +54,7 @@ export default function InputPage() {
         throw new Error("Failed to submit data");
       }
 
-     /*  const data = await response.json();
+      /*  const data = await response.json();
       setSuccessMessage(data.message); */
     } catch (error) {
       setErrorMessage("Failed to submit data. Please try again.");
@@ -65,14 +64,18 @@ export default function InputPage() {
   };
 
   return (
-    <div className="flex justify-center pt-36 md:w-1/2 lg:w-1/3 m-auto">
+    <div
+      className="flex justify-center pt-36 md:w-1/2 lg:w-1/3 m-auto"
+      aria-label="Input Page"
+    >
       <div className="flex flex-col w-5/6 h-[370px] items-center justify-between">
         <div className="w-full">
-          <Title text={"Create your plan"} />
+          <Title text={"Create your plan"} aria-label="Page Title" />
         </div>
         <form
           className="flex flex-col justify-center w-full h-[320px]"
           onSubmit={handleSubmit}
+          aria-label="Submission Form"
         >
           <label className="text-fontWhite text-xl mb-5" htmlFor="ideaInput">
             Input your idea:
@@ -84,13 +87,23 @@ export default function InputPage() {
             placeholder="Enter your idea"
             onChange={handleChange}
             required
+            aria-label="Idea Input Field"
           ></textarea>
           <div className="m-auto text-center">
-            <Button text={isLoading ? "Loading..." : "Submit"} />
+            <Button
+              text={isLoading ? "Loading..." : "Submit"}
+              aria-label={isLoading ? "Loading" : "Submit Button"}
+            />
 
-            {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+            {errorMessage && (
+              <p className="text-red-500" aria-label="Error Message">
+                {errorMessage}
+              </p>
+            )}
             {successMessage && (
-              <p className="text-green-500">{successMessage}</p>
+              <p className="text-green-500" aria-label="Success Message">
+                {successMessage}
+              </p>
             )}
           </div>
         </form>
