@@ -51,8 +51,8 @@ export default async function Navbar() {
         aria-label="Header Navigation"
       >
         <div>
-          <Link href="/" className="m-4" aria-label="Navigate to Home">
-            COPY.AI
+          <Link href="/" className="m-4 font-titleFont text-2xl" aria-label="Navigate to Home">
+            COPY craft pro
           </Link>
         </div>
         <ul
