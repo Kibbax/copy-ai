@@ -13,7 +13,13 @@ export const POST = async (request) => {
   try {
     const body = await request.json();
     const chatCompletion = await openai.chat.completions.create({
-      messages: [{ role: "user", content: `You are the best marketing and community manager consultant, specialized in copywriting. Generate the best copywriting focused on ${body.prompt}, to be used in ${body.value}, and aimed at an audience of ${body.targetAge}.`}],
+      messages: [{ 
+        role: "system",
+        content: "You are the best marketing and community manager consultant, specialized in copywriting."
+      },{ 
+        role: "user", 
+        content: `Generate the best copywriting focused on ${body.prompt}, to be used in ${body.value}, and aimed at an audience of ${body.targetAge}.`
+      }],
       model: "gpt-3.5-turbo",
     //   temperature: 0.7,
       max_tokens: 60,
