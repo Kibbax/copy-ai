@@ -32,7 +32,7 @@ export const authOptions = {
           name: userFound.name,
           email: userFound.email,
         }) */
-
+        
         return {
             id: userFound.id,
             name: userFound.name,

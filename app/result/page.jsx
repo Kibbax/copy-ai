@@ -49,7 +49,7 @@ const Page = () => {
       </h2>
 
       <div className="flex text-fontWhite text-sm font-textFont justify-around">
-        <div className="w-full h-40 bg-zinc-500 bg-opacity-30 rounded-lg relative overflow-auto " style={{ scrollbarWidth: 'thin', margin: '0 auto' }}>
+        <div className="w-full h-40 bg-zinc-500 bg-opacity-30 rounded-lg relative overflow-auto containerScroll" style={{ scrollbarWidth: 'thin', margin: '0 auto' }}>
           <p className="w-11/12 whitespace-pre-line break-words m-auto mt-2 mb-1" >
             {result}
           </p>
@@ -59,12 +59,14 @@ const Page = () => {
         </div>
       </div>
       
-      <div className="text-center align-baseline mt-2" onMouseOver={()=>{setHovered(true)}} onMouseOut={()=>{setHovered(false)}}>
+      <div className="text-center align-baseline mt-2" >
+        <div className="inline" onMouseOver={()=>{setHovered(true)}} onMouseOut={()=>{setHovered(false)}}>
         <PDFDownloadLink document={<DocPDF result={result} />} fileName="Copy.pdf">
         <Button text="Download PDF" />
         </PDFDownloadLink>
+        </div>
       </div>
-      <div id="docPDF" onMouseOver={()=>{setViewPDF(true)}} onMouseOut={()=>{setViewPDF(false)}}className={`${hovered ||viewPDF ? "block": "hidden"}`}>
+      <div id="docPDF" onMouseOver={()=>{setViewPDF(true)}} onMouseOut={()=>{setViewPDF(false)}} className={`${hovered ||viewPDF ? "block": "hidden"}`}>
         <PDFViewer className="m-auto">
           <DocPDF result={result} />
         </PDFViewer>
