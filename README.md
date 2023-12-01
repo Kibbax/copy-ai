@@ -2,7 +2,6 @@
 
 | [English](README.md) | [Español](README.es.md) | 
 
-![CopyCraft Pro Logo](./public/images/PNG-para-el-Readme.png)
 
 
 1. [Developers](#developers)
@@ -10,6 +9,7 @@
 3. [Project Objective](#project-objective)
 4. [UX/UI Design Documentation](#uxui-design-documentation)
    - [Design Concept](#design-concept)
+   - [Screenshots](#screenshots)
 5. [Key Features](#key-features)
    - [Content Briefing](#content-briefing)
    - [Automatic Copy Generation](#automatic-copy-generation)
@@ -44,6 +44,36 @@ CopyCraft Pro aims to simplify and expedite the content creation process for mar
 
 ### Design Concept
 CopyCraft Pro focuses on providing marketing professionals with an engaging and effective user experience. With an intuitive design and optimized features, the platform aims to inspire creativity and efficiency in crafting captivating content.
+
+### Screenshots
+
+#### Home Page
+
+![Home Page](./public/images/HomePage.jpeg)
+
+**Description:**
+CopyCraft Pro's home page welcomes users with a clean and friendly design, providing quick access to key features. The intuitive interface invites users to start their content creation experience efficiently.
+
+#### Login Page
+
+![Login Page](./public/images/LoginPage.jpeg)
+
+**Validation Implementation:**
+We implemented input validations using React Hook Form for seamless form handling in the frontend. Additionally, an extra layer of validation is applied using Yup, enhancing the user experience and ensuring data integrity.
+
+#### Signup Page
+
+![Signup Page](./public/images/SignUpPage.jpeg)
+
+**Description:**
+CopyCraft Pro's signup page offers a straightforward process for new users to join the platform. With a clear and appealing design, the registration form ensures a quick and easy onboarding to CopyCraft Pro's powerful tools.
+
+#### Input Page
+
+![Input Page](./public/images/InputPage.png)
+
+**Description:**
+CopyCraft Pro's input page features an intuitive interface for data entry. Users can provide key information and receive accurate, personalized results. The optimized design makes it easy to create queries and generate compelling copies.
 
 ## Key Features
 
@@ -92,13 +122,15 @@ To ensure data integrity, we will implement a data recovery plan, including:
 - Logical deletion system for both users and their queries, allowing users to recover their data until the expiration date, after which it will be permanently deleted.
 
 ### Conclusion
-The three-tier architecture of the application ensures a scalable and secure design. The separation of responsibilities between the frontend, backend, and database allows for efficient development and straightforward maintenance. Additionally, the ability to query a third-party API and record request histories enriches the application's functionality.
+The three-tier architecture of the application ensures a
+
+ scalable and secure design. The separation of responsibilities between the frontend, backend, and database allows for efficient development and straightforward maintenance. Additionally, the ability to query a third-party API and record request histories enriches the application's functionality.
 
 ## Running the Project Locally
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/your-username/copycraft-pro.git
+   git clone https://github.com/Kibbax/copy-ai.git
    ```
 
 2. **Install Dependencies:**

@@ -7,8 +7,6 @@ import { useSession } from "next-auth/react";
 import { useResult } from "../../context/resultContext"; 
 
 
-
-
 export default function InputPage() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -74,8 +72,7 @@ export default function InputPage() {
      /*  const data = await response.json();
       setSuccessMessage(data.message); */
     } catch (error) {
-      console.error('Error:', error);
-      setErrorMessage('Failed to submit data. Please try again.');
+      setErrorMessage("Failed to submit data. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -87,7 +84,10 @@ export default function InputPage() {
         <div className="w-full">
           <Title text={"Create your plan"} />
         </div>
-        <form className="flex flex-col justify-center w-full h-[320px]" onSubmit={handleSubmit}>
+        <form
+          className="flex flex-col justify-center w-full h-[320px]"
+          onSubmit={handleSubmit}
+        >
           <label className="text-fontWhite text-xl mb-5" htmlFor="ideaInput">
             Input your idea:
           </label>
@@ -102,10 +102,11 @@ export default function InputPage() {
           <div className="m-auto text-center">
             <Button text={isLoading? "Loading...": "Submit"} disabled={isLoading} />
             {errorMessage && <p className="text-red-500">{errorMessage}</p>}
-            {successMessage && <p className="text-green-500">{successMessage}</p>}
+            {successMessage && (
+              <p className="text-green-500">{successMessage}</p>
+            )}
           </div>
-        </form>    
-       
+        </form>
       </div>
     </div>
   );
