@@ -2,11 +2,12 @@
 import { BsSearch,BsDownload,BsFillCaretRightFill,BsFillCaretLeftFill} from "react-icons/bs";
 import Link from "next/link";
 import Title from "@/components/Title"
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import DocPDF from "@/components/DocPDF";
 
 
-
-export default function DownloadPage() {
+export default function History() {
   const [data, setData] = useState(null)
 
   useEffect(()=>{
@@ -23,64 +24,8 @@ export default function DownloadPage() {
     fetchData().then(data => setData(data))
 
   },[])
-   console.log(data)
 
 
-  const files = [
-    {
-      date: "10/05/2022",
-      fileName: "My market"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My shoes"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My plane"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My car"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    },
-    {
-      date: "10/05/2022",
-      fileName: "My coffee"
-    }
-
-  ]
   function upperCase(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
   }
@@ -100,23 +45,29 @@ export default function DownloadPage() {
             />
           </div>
           <div className="flex flex-col justify-between">
-            <div className="max-h-52 mt-5 bg-opacity-30 text-fontWhite rounded-md bg-inputColor p-5 pt-2 focus:outline-none focus:ring focus:ring-linesColors overflow-y-auto containerScroll">
-                {data?data.inputs.map((input, i) => (
-                      <li key={i} className="flex justify-between mb-1">
-                        <span title={`${input.content}`} className="flex-grow">{i + 1}-{upperCase(input.content.substring(0,15))
+
+            <div className="max-h-52 mt-5 bg-opacity-30 text-fontWhite rounded-md bg-inputColor p-5 pt-2 focus:outline-none focus:ring focus:ring-linesColors overflow-y-auto containerScroll">             
+                {data? ( data.inputs.length == 0 ? (<p className="text-center font-bold">No results found</p>): data.inputs.map((input, i) => (
+                  <li key={i} className="flex justify-between mb-1">
+                        <span title={`${input.content}`} className="flex-grow">{i + 1}-{upperCase(input.content.substring(0,17))
                         }</span>
                         <Link className="mr-2" href={"/"}>
                         {input.results[0].date.substring(0,10)}
-                          
                         </Link>
-                        <BsDownload />
+                        <PDFDownloadLink document={<DocPDF result={input.results[0].result} />} fileName={`${input.content}.pdf`}>
+                        <BsDownload className="hover:text-primary"/>
+                        </PDFDownloadLink>
                       </li>
-                )) : "Cargando..."}
+                ))): (<>
+      <div className="m-auto w-16 h-16 border-t-4 border-hoverColor border-solid rounded-full animate-spin"></div>
+    </>
+            )}
+              
             </div>
-            <div className="pt-2 flex text-primary justify-between">
+            {/* <div className="pt-2 flex text-primary justify-between">
               <button className="w-1/2 mr-1 pr-3 pl-2 bg-activeLigthBlue rounded-full lg:w-1/3"><BsFillCaretLeftFill className="inline"/>Prev </button>
               <button className=" w-1/2 ml-1 pr-2 pl-3  bg-activeLigthBlue rounded-full lg:w-1/3">Next <BsFillCaretRightFill className="inline"/></button>
-            </div>
+            </div> */}
           </div>
           
     </div>
