@@ -2,15 +2,27 @@
 import { signIn } from "next-auth/react";
 import { useState } from "react";
 
+
+
 export default function ButtonSignUpGoogle() {
   const [loading, setLoading] = useState(false);
+
+  const buttonStyles = {
+    width: '200px',
+    height: '44px',
+    top: '556px',
+    left: '88px',
+    borderRadius: '10px',
+    borderBottom: '1px solid #5A189A', // Borde inferior
+    borderRight: '1px solid #5A189A', // Borde derecho
+  };
 
   return (
     <button type="button"
       onClick={() => {signIn("google", { callbackUrl: "/input" }); setLoading(true)}}
-      className={`link hover:bg-primary font-bold py-2 px-4 rounded-tl-lg rounded-tr-lg block m-auto`}
-    >
-      {loading ? "Loading...": "Login Google"}
+      className="w-1/2 h-10 flex-shrink-1 rounded-md bg-opacity-33 bg-slate-300 hover:bg-hoverColor hover:text-hoverTextColor text-black font-bold m-3"
+      style={buttonStyles}>
+      {loading ? "Loading...": "Login with Google"}
       
     </button>
   );
