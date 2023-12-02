@@ -24,7 +24,7 @@ function NavBar() {
               {/* HAMBURGER BUTTON FOR MOBILE */}
               <div className="md:hidden">
                 <button
-                  className="p-2 text-gray-700 rounded-md outline-none focus:border-gray-400 focus:border"
+                  className="p-2 text-fontPurple rounded-md outline-none focus:border-gray-400 focus:border"
                   onClick={() => setNavbar(!navbar)}
                 >
                   {navbar ? (
@@ -34,7 +34,7 @@ function NavBar() {
                       width={30}
                       height={30}
                       alt="logo"
-                      className="focus:border-none active:border-none"
+                      className="focus:border-none active:border-none color-fontPurple"
                     />
                   )}
                 </button>
@@ -51,54 +51,29 @@ function NavBar() {
               {!session?.user ? (
                 <>
                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/auth/login" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/auth/login" onClick={() => setNavbar(!navbar)} aria-label="Navigate to Login Page">
                     Login
-                    {/* <NavbarButton
-                        text="Login"
-                        route="/auth/login"
-                        aria-label="Navigate to Login Page"
-                    /> */}
                   </Link>
                 </li>
                 <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                <Link href="/auth/register"onClick={() => setNavbar(!navbar)}>
+                <Link href="/auth/register"onClick={() => setNavbar(!navbar)}  aria-label="Navigate to Sign Up Page">
                     Sign up
-                  {/* <NavbarButton
-                    text="Sign Up"
-                    route="/auth/register"
-                    aria-label="Navigate to Sign Up Page"
-                  /> */}
                 </Link>
               </li>
             </>
           ) : (<>
                 <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/history" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/history" onClick={() => setNavbar(!navbar)} aria-label="Navigate to Download Page">
                     History
-                  {/* <NavbarButton
-                    text="History"
-                    route="/download"
-                    aria-label="Navigate to Download Page"
-                  /> */}
                   </Link>
                 </li>
                 <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/input" onClick={() => setNavbar(!navbar)}>
+                  <Link href="/input" onClick={() => setNavbar(!navbar)} aria-label="Navigate to Input Page">
                     Input
-                  {/* <NavbarButton
-                    text="Input Prompt"
-                    route="/input"
-                    aria-label="Navigate to Input Page"
-                  /> */}
                   </Link>
                 </li>
-                {/* <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                  <Link href="/download" onClick={() => setNavbar(!navbar)}>
-                    Download
-                  </Link>
-                </li> */}
                 <li aria-label="Log Out" className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
-                    <button onClick={()=>signOut()} className="link hover:bg-primary font-bold py-2 px-4 rounded-tl-lg rounded-tr-lg inline-block mr-4">
+                    <button onClick={()=>signOut()}>
                         SignOut
                     </button>
                 </li>
