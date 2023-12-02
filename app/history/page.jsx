@@ -4,11 +4,14 @@ import Title from "@/components/Title"
 import { useState, useEffect, Suspense } from "react";
 import { PDFDownloadLink } from "@react-pdf/renderer";
 import DocPDF from "@/components/DocPDF";
+import { useSession } from "next-auth/react";
 
 export default function History() {
   const [data, setData] = useState(null)
   const [inputList, setInputList] = useState(null) 
   const [searchHistory, setSearchHistory] = useState("")
+  const { data: session } = useSession()
+  
 
   useEffect(()=>{
     async function fetchData(){
@@ -51,7 +54,7 @@ export default function History() {
 
     return<div className="text-gray-200 flex ml-10 md:w-1/2 md:m-auto lg:w-1/3 flex-col">
         <div className="w-3/4 md:w-1/2 lg:w-1/3 pt-10 pb-10">
-            <Title text="Hi Marco"/>
+            <Title text={session? "Hi "+session?.user?.name :"..."} />
             <h2 className="font-bold font-dm-sans">Check your history!</h2>
         </div>
          <div className="w-2/3 h-10 flex-shrink-0 relative">
@@ -64,7 +67,7 @@ export default function History() {
               onChange={handleSearch}
             />
           </div>
-          <div className="flex flex-col justify-between">
+          <div className="flex flex-col justify-between w-[88%] md:w-full">
 
             <div className="max-h-52 max-w-md mt-5 bg-opacity-30 text-fontWhite rounded-md bg-inputColor p-5 pt-2 focus:outline-none focus:ring focus:ring-linesColors overflow-y-auto containerScroll">             
                 {data? ( data.inputs.length == 0 ? (<p className="text-center font-bold">No results found</p>): data.inputs.map((input, i) => (
@@ -74,7 +77,7 @@ export default function History() {
                         <span className="mr-2 whitespace-nowrap">
                         {input.results[0]?.date.substring(0,10)}
                         </span>
-                        <PDFDownloadLink document={<DocPDF result={input.results[0]?.result} />} fileName={`${input.content}.pdf`}>
+                        <PDFDownloadLink document={<DocPDF result={input.results[0]?.result} input={input.content} />} fileName={`${input.content}.pdf`}>
                         <BsDownload className="hover:text-primary"/>
                         </PDFDownloadLink>
                       </li>
