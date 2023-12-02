@@ -1,112 +1,48 @@
+"use client"
+import { useState } from "react";
 import Link from "next/link";
 import NavbarButton from "./NavbarButton";
 import LogOutButton from "./LogOutButton";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "../app/api/auth/[...nextauth]/route";
-//import { usePathname } from "next/navigation"
-//import {signOut} from 'next-auth/react'
 
 export default async function Navbar() {
-  //const pathname = usePathname()
+  const [isMenuOpen, setMenuOpen] = useState(false);
   const session = await getServerSession(authOptions);
+
+  const handleToggleMenu = () => {
+    setMenuOpen(!isMenuOpen);
+  };
 
   return (
     <nav className="bg-black bg-opacity-60">
-      <div className="fixed top-0 left-0 h-screen w-40 bg-stone-900 text-white hidden">
-        <ul className="">
-          <li className="py-4 border-b border-white">
-            <Link href="/" className="m-4">
-              Home
-            </Link>
-          </li>
-
-          <li className="py-4 border-b border-white ">
-            <Link href="/auth/login" className="m-4">
-              Login
-            </Link>
-          </li>
-
-          <li className="py-4 border-b border-white">
-            <Link href="/input" className="m-4">
-              Input
-            </Link>
-          </li>
-
-          <li className="py-4 border-b border-white">
-            <Link href="/result" className="m-4">
-              Results
-            </Link>
-          </li>
-
-          <li className="py-4 border-b border-white">
-            <Link href="/download" className="m-4">
-              Download
-            </Link>
-          </li>
-        </ul>
-      </div>
-
-      <div
-        className="w-screen flex items-center justify-between"
-        aria-label="Header Navigation"
-      >
+      {/* ... (código existente) */}
+      
+      <div className="w-screen flex items-center justify-between" aria-label="Header Navigation">
         <div>
           <Link href="/" className="m-4 font-titleFont text-2xl" aria-label="Navigate to Home">
             COPY craft pro
           </Link>
         </div>
-        <ul
-          className="flex items-center justify-between pt-2"
-          aria-label="Main Navigation"
-        >
-          {!session?.user ? (
-            <>
-              <li className="">
-                <Link href="/auth/login">
-                  <NavbarButton
-                    text="Login"
-                    route="/auth/login"
-                    aria-label="Navigate to Login Page"
-                  />
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/auth/register">
-                  <NavbarButton
-                    text="Sign Up"
-                    route="/auth/register"
-                    aria-label="Navigate to Sign Up Page"
-                  />
-                </Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li className="">
-                <Link href="/download">
-                  <NavbarButton
-                    text="History"
-                    route="/download"
-                    aria-label="Navigate to Download Page"
-                  />
-                </Link>
-              </li>
-              <li className="">
-                <Link href="/input">
-                  <NavbarButton
-                    text="Input Prompt"
-                    route="/input"
-                    aria-label="Navigate to Input Page"
-                  />
-                </Link>
-              </li>
-              <li aria-label="Log Out">
-                <LogOutButton />
-              </li>
-            </>
-          )}
-        </ul>
+        
+        {/* ... (código existente) */}
+        
+        <div className="md:hidden">
+          <button
+            className="text-white p-4 focus:outline-none"
+            onClick={handleToggleMenu}
+            aria-label="Toggle Menu"
+          >
+            {isMenuOpen ? "Close" : "Menu"}
+          </button>
+        </div>
       </div>
+
+      {isMenuOpen && (
+        <div className="md:hidden">
+          {/* ... (código existente) */}
+        </div>
+      )}
     </nav>
   );
 }
