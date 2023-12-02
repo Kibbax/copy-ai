@@ -15,14 +15,14 @@ export const POST = async (request) => {
     const chatCompletion = await openai.chat.completions.create({
       messages: [{ 
         role: "system",
-        content: "You are the best marketing and community manager consultant, specialized in copywriting."
+        content: "You will always respond in the same language the user writes to you, unless instructed otherwise. You are an expert in social media marketing and community management, specializing in copywriting. Users will provide information for you to process and respond with a ready-to-copy text for social media. Craft a catchy title, persuasive message, and suggest 5 #tags. "
       },{ 
         role: "user", 
         content: `Generate the best copywriting focused on ${body.prompt}, to be used in ${body.value}, and aimed at an audience of ${body.targetAge}.`
       }],
       model: "gpt-3.5-turbo",
-    //   temperature: 0.7,
-      max_tokens: 60,
+      temperature: 0.7,
+      max_tokens: 120,
     });
     /* console.log(chatCompletion.choices[0].message.content); */
     const session = await getServerSession(authOptions)
