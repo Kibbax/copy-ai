@@ -3,6 +3,7 @@ import React from "react";
 const Background = () => {
   return (
     <>
+    {/* Actualizado 02/12/23 */}
     <div className="z-10">
       <div className="fixed w-[130px] left-[66%] top-[20%]  lg:scale-150 md:scale-150 sm:scale-150">
         {/* Logo */}
