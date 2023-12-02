@@ -10,9 +10,6 @@ export const POST = async (req, res) => {
 
   const data = await req.json();
 
- /*  const token = await jwt.getToken({ req })
-  console.log(token) */
-
   if (!session) {
     return NextResponse.json({
       message: "Unauthorized",
@@ -37,12 +34,14 @@ export const POST = async (req, res) => {
       }
     })
   
-    
+    function upperCase(string) {
+      return string.charAt(0).toUpperCase() + string.slice(1);
+    }
   
     const newInput = await db.ContentInput.create({
       data: {
         userId: userFound.id,
-        content: prompt,
+        content: upperCase(prompt),
         networkType: value,
         targetAge: targetAge,
       }

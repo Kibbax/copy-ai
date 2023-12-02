@@ -55,12 +55,8 @@ export default function InputPage() {
 
       });
       const res = await response.json()
-      newResult(res)
-      
-      /* console.log(res)
-      console.log(response.ok)
+      newResult({res})
 
-      console.log('Response status:', response.status); */
 
       if (!response.ok) {
         console.error('Failed to submit data. Response status:', response.status);

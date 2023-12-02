@@ -11,3 +11,12 @@
     padding: 0;
     margin: 0;
 }
+
+.containerScroll::-webkit-scrollbar{
+    width: 3px;
+}
+
+.containerScroll::-webkit-scrollbar-thumb{
+  background-color: rgb(174, 174, 174) ;
+  border-radius: 50px;
+}

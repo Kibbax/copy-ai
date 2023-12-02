@@ -34,6 +34,7 @@ export const POST = async (request) => {
         inputs: {
           select: {
             id:true,
+            content: true,
           }
         }
       }
@@ -46,7 +47,10 @@ export const POST = async (request) => {
         result: chatCompletion.choices[0].message.content,
       }
     });
-     return NextResponse.json(chatCompletion.choices[0].message.content);
+     return NextResponse.json({
+      input :input[input.length - 1].content,
+      result :chatCompletion.choices[0].message.content
+    });
 
     
   } catch (error) {
