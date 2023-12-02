@@ -1,5 +1,5 @@
 export {default} from "next-auth/middleware"
 
 export const config = {
-matcher: ["/input/:path*", "/result/:path*", "/download/:path*", "/inputB/:path*",  ],
+matcher: ["/input/:path*", "/result/:path*", "/history/:path*", "/inputB/:path*",  ],
 }
