@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+import Navbar from "../components/NavbarC"
 import './globals.css'
 import Background from "@/components/Background"
 import { Toaster } from "sonner"
