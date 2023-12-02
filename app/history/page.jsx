@@ -77,7 +77,7 @@ export default function History() {
                         <span className="mr-2 whitespace-nowrap">
                         {input.results[0]?.date.substring(0,10)}
                         </span>
-                        <PDFDownloadLink document={<DocPDF result={input.results[0]?.result} />} fileName={`${input.content}.pdf`}>
+                        <PDFDownloadLink document={<DocPDF result={input.results[0]?.result} input={input.content} />} fileName={`${input.content}.pdf`}>
                         <BsDownload className="hover:text-primary"/>
                         </PDFDownloadLink>
                       </li>

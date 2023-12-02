@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const DocPDF = ({ result }) => {
+const DocPDF = ({ result, input }) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -68,7 +68,7 @@ const DocPDF = ({ result }) => {
         <View style={styles.separator} />
 
         {/* Título */}
-        <Text style={styles.title}>Título del PDF</Text>
+        <Text style={styles.title}>{input}</Text>
 
         {/* Input Section */}
         <View style={styles.section}>

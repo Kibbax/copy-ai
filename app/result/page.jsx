@@ -15,10 +15,8 @@ const Page = () => {
   const [hovered, setHovered] = useState(false)
   const [viewPDF, setViewPDF] = useState(false)
 
- 
-
   const copyToClipboar = () => {
-    navigator.clipboard.writeText(result).then(()=>{
+    navigator.clipboard.writeText(result.res.result).then(()=>{
       //aviso de texto copiado en portapapeles
     toast.success("Copied",{
       position: "top-center",
@@ -32,11 +30,6 @@ const Page = () => {
     })
     })
   }
- /*  const viewPDF = () => {
-    document.getElementById("docPDF").classList.remove("hidden")
-    setHovered(true)
-  } */
-  
   
 
   
@@ -51,24 +44,24 @@ const Page = () => {
       <div className="flex text-fontWhite text-sm font-textFont justify-around">
         <div className="w-full h-40 bg-zinc-500 bg-opacity-30 rounded-lg relative overflow-auto containerScroll" style={{ scrollbarWidth: 'thin', margin: '0 auto' }}>
           <p className="w-11/12 whitespace-pre-line break-words m-auto mt-2 mb-1" >
-            {result}
+            {result?.res?.result}
           </p>
           <div title="copy" className="absolute opacity-30 hover:opacity-100 top-1 right-1" onClick={copyToClipboar}>
            <FiCopy/>
           </div>
         </div>
       </div>
-      
       <div className="text-center align-baseline mt-2" >
         <div className="inline" onMouseOver={()=>{setHovered(true)}} onMouseOut={()=>{setHovered(false)}}>
-        <PDFDownloadLink document={<DocPDF result={result} />} fileName="Copy.pdf">
+        <PDFDownloadLink document={<DocPDF result={result?.res.result} input={result?.res.input} />
+} fileName={result?.res.input + ".pdf"}>
         <Button text="Download PDF" />
         </PDFDownloadLink>
         </div>
       </div>
       <div id="docPDF" onMouseOver={()=>{setViewPDF(true)}} onMouseOut={()=>{setViewPDF(false)}} className={`${hovered ||viewPDF ? "block": "hidden"}`}>
         <PDFViewer className="m-auto">
-          <DocPDF result={result} />
+          <DocPDF result={result?.res.result} input={result?.res.input} />
         </PDFViewer>
       </div>
     </div>
