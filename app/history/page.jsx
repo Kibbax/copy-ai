@@ -58,7 +58,7 @@ export default function History() {
             <BsSearch className="w-6 h-6 absolute left-2 top-2 text-gray-400" />
             <input
               type="text"
-              className="w-full h-full pl-10 pr-2 bg-fontWhite bg-opacity-30 text-white border border-gray-300 rounded-full focus:outline-none"
+              className="max-w-md h-full  pl-10 pr-2 bg-fontWhite bg-opacity-30 text-white border border-gray-300 rounded-full focus:outline-none"
               placeholder="Buscar..."
               value={searchHistory}
               onChange={handleSearch}
@@ -66,7 +66,7 @@ export default function History() {
           </div>
           <div className="flex flex-col justify-between">
 
-            <div className="max-h-52 mt-5 bg-opacity-30 text-fontWhite rounded-md bg-inputColor p-5 pt-2 focus:outline-none focus:ring focus:ring-linesColors overflow-y-auto containerScroll">             
+            <div className="max-h-52 max-w-md mt-5 bg-opacity-30 text-fontWhite rounded-md bg-inputColor p-5 pt-2 focus:outline-none focus:ring focus:ring-linesColors overflow-y-auto containerScroll">             
                 {data? ( data.inputs.length == 0 ? (<p className="text-center font-bold">No results found</p>): data.inputs.map((input, i) => (
                   <li key={i} className="flex justify-between mb-1">
                         <span title={`${input.content}`} className="flex-grow w-12 overflow-hidden truncate pr-3">{i + 1}-{upperCase(input.content)
