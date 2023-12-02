@@ -83,7 +83,7 @@ export default async function Navbar() {
           ) : (
             <>
               <li className="">
-                <Link href="/download">
+                <Link href="/history">
                   <NavbarButton
                     text="History"
                     route="/download"
