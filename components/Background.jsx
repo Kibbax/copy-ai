@@ -1,10 +1,10 @@
 /* eslint-disable */
+/* Actualizado 03/12/23 */
 import React from "react";
 
 const Background = () => {
   return (
     <>
-    {/* Actualizado 03/12/23 */}
     <div className="z-10">
       <div className="fixed w-[130px] left-[66%] top-[20%] 2xl:left-[55%] 2xl:top-[20%] 2xl:scale-[2.0] lg:scale-[1.75] md:scale-150 sm:scale-150">
         {/* Logo */}
