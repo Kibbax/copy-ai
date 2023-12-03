@@ -16,9 +16,9 @@ function NavBar() {
       <nav className="w-full bg-black bg-opacity-60">
         <div className="justify-between px-4 mx-auto lg:max-w-7xl md:items-center md:flex md:px-8">
           <div>
-            <div className="flex items-center justify-between py-3 md:py-5 md:block">
+            <div className="flex items-center justify-between py-3 md:block">
               {/* LOGO */}
-              <Link href="/" className="m-4 font-titleFont text-2xl" aria-label="Navigate to Home">
+              <Link href="/" className="font-titleFont text-2xl text-titleFont font-bold " aria-label="Navigate to Home">
                  COPY craft pro
             </Link>
               {/* HAMBURGER BUTTON FOR MOBILE */}
@@ -47,15 +47,15 @@ function NavBar() {
                 navbar ? 'p-12 md:p-0 block' : 'hidden'
               }`}
             >
-              <ul className="h-screen md:h-auto items-center justify-center md:flex ">
+              <ul className=" h-screen md:h-auto items-center justify-center md:flex ">
               {!session?.user ? (
                 <>
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li className=" text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
                   <Link href="/auth/login" onClick={() => setNavbar(!navbar)} aria-label="Navigate to Login Page">
                     Login
                   </Link>
                 </li>
-                <li className="pb-6 text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li className=" text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
                 <Link href="/auth/register"onClick={() => setNavbar(!navbar)}  aria-label="Navigate to Sign Up Page">
                     Sign up
                 </Link>
