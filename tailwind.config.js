@@ -33,6 +33,7 @@ module.exports = {
       extend: {
         scale: {
           '200': '2.00',
+          '175': '1.75',
         },
       }
     },

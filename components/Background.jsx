@@ -1,13 +1,14 @@
-import React from "react";
-
 /* eslint-disable */
+/* Actualizado 03/12/23 */
+import React from "react";
 
 const Background = () => {
   return (
     <>
-    <div className="-z-10">
+    <div className="z-10">
+      <div className="fixed w-[130px] left-[66%] top-[20%] 2xl:left-[55%] 2xl:top-[20%] 2xl:scale-[2.0] lg:scale-[1.75] md:scale-150 sm:scale-150">
         {/* Logo */}
-        <div className="fixed grid grid-cols-3 grid-rows-3 gap-2 w-[130px] m-auto mt-20 opacity-30 left-[50rem] scale-150">
+        <div className="grid grid-cols-3 grid-rows-3 gap-2 opacity-30">
           {/* Rectángulo 1 */}
           <div className="bg-violet-800 w-[80px] h-[40px] rounded-bl-full rounded-tr-full col-span-2 row-span-1"></div>
 
@@ -53,16 +54,17 @@ const Background = () => {
             />
           </div>
         </div>
-        
-        {/* Círculo con borde */}
-        <div className="fixed top-[52rem] left-1/4 transform -translate-x-1/2 -translate-y-1/2 skew-x-[-50deg] w-[576px] h-[576px] bg-transparent border-2 border-violet-900 border-opacity-30 rounded-full rotate-[136deg] -z-10" />
       </div>
-
-
-
+      
+      {/* Círculo con bordes (oculto en pantallas sm) */}
+      <div className="hidden sm:block fixed bottom-[60%] left-[30%]  top-[52rem]  transform -translate-x-1/2 -translate-y-1/2 skew-x-[-50deg] w-[576px] h-[576px] bg-transparent border-2 border-violet-900 border-opacity-30 rounded-full rotate-[136deg] -z-10" />
+      </div>
       
     </>
   );
 };
 
 export default Background;
+
+
+
