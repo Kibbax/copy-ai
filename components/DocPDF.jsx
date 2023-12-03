@@ -1,6 +1,8 @@
 import React from 'react';
 import { Document, Page, Text, View, Link, StyleSheet } from '@react-pdf/renderer';
 
+/* eslint-disable */
+
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
