@@ -1,7 +1,6 @@
 import React from 'react';
 import { Document, Page, Text, View, Link, StyleSheet } from '@react-pdf/renderer';
 
-// Estilos
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
@@ -58,19 +57,6 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecoration: 'underline',
   },
-  // Estilos adicionales para los títulos y el texto
-  inputTitle: {
-    fontSize: 18,
-    color: '#5A189A',
-  },
-  resultTitle: {
-    fontSize: 18,
-    color: '#5A189A',
-  },
-  italicText: {
-    fontStyle: 'italic',
-    color: '#333',
-  },
 });
 
 const DocPDF = ({ input, result }) => {
@@ -85,7 +71,7 @@ const DocPDF = ({ input, result }) => {
 
         {/* Input Section */}
         <View style={[styles.section, { marginTop: 80 }]}>
-          <Text style={[styles.title, styles.inputTitle]}>Your Creative Input</Text>
+          <Text style={styles.title}>Your Creative Input</Text>
           <Text style={[styles.resultText, styles.spaceBetweenText]}>
             {input ? input : "..."}
           </Text>
@@ -93,8 +79,8 @@ const DocPDF = ({ input, result }) => {
 
         {/* Result Section */}
         <View style={[styles.section, {marginTop: 30}]}>
-          <Text style={[styles.title, styles.resultTitle]}>Crafted Copy Just for You</Text>
-          <Text style={[styles.resultText, styles.spaceBetweenText, styles.italicText]}>Take a moment to savor the copy you've crafted. It's uniquely yours.</Text>
+          <Text style={styles.title}>Crafted Copy Just for You</Text>
+          <Text style={[styles.resultText, styles.spaceBetweenText, { fontStyle: 'italic', color: '#333' }]}>Take a moment to savor the copy you've crafted. It's uniquely yours.</Text>
           <Text style={styles.resultText}>{result ? result : "..."}</Text>
         </View>
 
