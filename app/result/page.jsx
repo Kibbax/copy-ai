@@ -7,6 +7,9 @@ import Button from "@/components/Button";
 import Title from "@/components/Title";
 import DocPDF from "@/components/DocPDF";
 import { useResult } from "../../context/resultContext";
+import { useRouter } from "next/navigation"
+import Link from "next/link";
+
 
 const Page = () => {
   const { result } = useResult();
@@ -34,7 +37,7 @@ const Page = () => {
   };
 
   return (
-    <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-20 pb-10 text-gray-200 relative">
+    <div className="w-3/4 md:w-1/2 lg:w-1/3 m-auto pt-20  text-gray-200 relative">
       <Title text="awesome!!" />
       <h2 className="text-lg">
         Copy AI crafted these captivating copies just for you!
@@ -58,9 +61,9 @@ const Page = () => {
         </div>
       </div>
 
-      <div className="text-center align-baseline mt-2">
+      <div className="text-center align-baseline mt-2 flex justify-between">
         <div
-          className="inline"
+          className="w-[48%] mr-2"
           onMouseOver={() => setHovered(true)}
           onMouseOut={() => setHovered(false)}
         >
@@ -73,11 +76,15 @@ const Page = () => {
             </PDFDownloadLink>
           )}
         </div>
+        <Link href="/input" className="block w-[48%]">
+        <Button text="New Copy"  />
+        </Link>
       </div>
+      
 
       <div id="docPDF" onMouseOver={() => setViewPDF(true)} onMouseOut={() => setViewPDF(false)} className={`${hovered || viewPDF ? "block" : "hidden"}`}>
         {isClient && (
-          <PDFViewer className="m-auto">
+          <PDFViewer>
             <DocPDF result={result?.res.result} input={result?.res.input} />
           </PDFViewer>
         )}
