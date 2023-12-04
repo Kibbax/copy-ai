@@ -18,7 +18,7 @@ function NavBar() {
           <div>
             <div className="flex items-center justify-between py-3 md:block">
               {/* LOGO */}
-              <Link href="/" className="font-titleFont text-2xl text-titleFont font-bold " aria-label="Navigate to Home">
+              <Link href="/" className="font-titleFont text-2xl text-titleFont" aria-label="Navigate to Home">
                  COPY craft pro
             </Link>
               {/* HAMBURGER BUTTON FOR MOBILE */}
@@ -62,17 +62,17 @@ function NavBar() {
               </li>
             </>
           ) : (<>
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li className="text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
                   <Link href="/history" onClick={() => setNavbar(!navbar)} aria-label="Navigate to Download Page">
                     History
                   </Link>
                 </li>
-                <li className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li className="text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
                   <Link href="/input" onClick={() => setNavbar(!navbar)} aria-label="Navigate to Input Page">
                     Input
                   </Link>
                 </li>
-                <li aria-label="Log Out" className="pb-6 text-xl text-white py-2 px-6 text-center  border-b-2 md:border-b-0  hover:bg-purple-600  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
+                <li aria-label="Log Out" className="text-xl text-white py-2 md:px-6 text-center border-b-2 md:border-b-0  hover:bg-purple-900  border-purple-900  md:hover:text-purple-600 md:hover:bg-transparent">
                     <button onClick={()=>signOut()}>
                         SignOut
                     </button>
