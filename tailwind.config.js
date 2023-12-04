@@ -20,7 +20,7 @@ module.exports = {
         'activeLigthBlue':'#6FE9D3',
         'inactiveLigthBlue':'#00CED1',
         'linesColors':'#5A189A',
-        'hoverColor':'#00CED1',
+        'hoverColor':'#E0AAFF',
         'hoverTextColor':'#19111E',
       },
     
